@@ -1,5 +1,7 @@
 # Basic PHP-MySQLi templates
 
+In this guide, the chosen format is MySQLi prepared statements and object-oriented style.
+
 ## Define database connection credentials
 
 PHP constant are used. Other methods could be used, such as the [singleton pattern](https://en.wikipedia.org/wiki/Singleton_pattern) with a single app class instance.
