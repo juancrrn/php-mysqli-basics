@@ -315,3 +315,106 @@ public function dbInsert(): int
     return $inserted_id;
 }
 ```
+
+### Data access object (DAO) pattern
+
+When using object-oriented programming, using the data access object (DAO) pattern is recommended. In this case, we implement an interface, and all the different classes that access the database must implement it.
+
+```php
+interface DAO
+{
+    
+    /*
+     *
+     * INSERT operations.
+     *  
+     */
+
+    /**
+     * Inserts and object in the database.
+     * 
+     * @param static $this Object to insert.
+     * 
+     * @return int         Identifier of the inserted object.
+     */
+    public function dbInsert(): int;
+
+    /*
+     *
+     * SELECT operations.
+     *  
+     */
+
+    /**
+     * Retrieves an object from the database.
+     * 
+     * @param int $id Identifier of the object to retrieve.
+     * 
+     * @return static Retrieved object.
+     */
+    public static function dbRetrieve(int $id);
+
+    /**
+     * Checks if there is an object in the database with the specified identifier.
+     * 
+     * @param int $id Identifier of the object.
+     * 
+     * @return bool   True if the object exists, else false.
+     */
+    public static function dbExistsId(int $id): bool;
+
+    /**
+     * Retrieves all objects from the database.
+     * 
+     * @return array List with all the objects.
+     */
+    public static function dbGetAll(): array;
+
+    /**
+     * Checks if an object meets al the restrictions to be deleted, i. e.
+     * it is not being referenced as foreign key in a different table.
+     * 
+     * @requires      The object exists.
+     * 
+     * @param int $id Identifier of the object.
+     * 
+     * @return array  Array containing the names of the tables which reference
+     *                the object, if any. Else, empty array.
+     */
+    public static function dbCheckDeleteConstraints(int $id): array;
+
+    /*
+     *
+     * UPDATE operations.
+     *  
+     */
+
+    /**
+     * Updates an object in the database.
+     * 
+     * @requires           The object exists.
+     * 
+     * @param static $this Object to update.
+     * 
+     * @return bool        Statement execution result.
+     */
+    public function dbUpdate(): bool;
+
+    /*
+     *
+     * DELETE operations.
+     *  
+     */
+
+    /**
+     * Deltes an object from the database.
+     * 
+     * @requires      The object exists.
+     * 
+     * @param int $id Identifier of the object.
+     * 
+     * @return bool   Statement execution result.
+     */
+    public static function dbEliminar(int $id): bool;
+}
+```
