@@ -1,6 +1,6 @@
 # Basic PHP-MySQLi templates
 
-In this guide, the chosen format is MySQLi prepared statements and object-oriented style.
+In this guide, the chosen format is MySQLi [prepared statements](https://www.php.net/manual/en/mysqli.quickstart.prepared-statements.php) and [object-oriented style](https://www.php.net/manual/en/mysqli.quickstart.dual-interface.php). Also, [heredoc syntax](https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc) is used to delimit SQL query strings.
 
 ## Define database connection credentials
 
